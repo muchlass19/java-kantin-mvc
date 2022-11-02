@@ -12,11 +12,11 @@ import javax.swing.JOptionPane;
  *
  * @author Chlas
  */
-public class RegistrasiController {
-    RegistrasiView registrasiView;
+public class RegistrasiPelangganController {
+    RegistrasiPelangganView registrasiView;
     UserDAOImplement daoImplement;
     
-    public RegistrasiController(RegistrasiView registrasiView) {
+    public RegistrasiPelangganController(RegistrasiPelangganView registrasiView) {
         this.registrasiView = registrasiView;
         daoImplement = new UserDAO();
     }

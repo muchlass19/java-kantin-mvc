@@ -5,15 +5,20 @@
  */
 package Helper;
 
-import User.RegistrasiView;
+import User.RegistrasiPelangganView;
+import User.RegistrasiTokoView;
 import User.LoginView;
 /**
  *
  * @author Chlas
  */
 public class MenuMethods {
-    public static void gotoRegistrasi(){
-        RegistrasiView menu = new RegistrasiView();
+    public static void gotoRegistrasiPelanggan(){
+        RegistrasiPelangganView menu = new RegistrasiPelangganView();
+        menu.setVisible(true);
+    }
+    public static void gotoRegistrasiToko(){
+        RegistrasiTokoView menu = new RegistrasiTokoView();
         menu.setVisible(true);
     }
     public static void gotoLogin(){
