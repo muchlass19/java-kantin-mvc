@@ -5,7 +5,6 @@
  */
 package User;
 
-import Helper.MenuMethods;
 import javax.swing.JTextField;
 
 /**
@@ -167,7 +166,8 @@ public class RegistrasiTokoView extends javax.swing.JFrame {
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
         // TODO add your handling code here:
-        MenuMethods.gotoLogin();
+        LoginView menu = new LoginView();
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_loginMenuActionPerformed
 

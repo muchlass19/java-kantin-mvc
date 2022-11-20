@@ -5,6 +5,13 @@
  */
 package User;
 
+import Home.PelangganHomeView;
+import Home.TokoHomeView;
+import Kantin.KantinDAO;
+import Kantin.KantinDAOImplement;
+import Kantin.KantinModel;
+import Kantin.RegistrasiKantinView;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,6 +37,23 @@ public class LoginController {
         return loginView.getPassword().getText().equals("");
     }
     
+    public void hasKantin(int id){
+        List<KantinModel> listData;
+        KantinDAOImplement kantinDao = new KantinDAO();
+        listData = kantinDao.getSingle(id);
+        
+        if(listData.isEmpty()){
+            RegistrasiKantinView menu = new RegistrasiKantinView();
+            menu.setDataLogin(id);
+            menu.setVisible(true);
+        } else {
+            TokoHomeView menu = new TokoHomeView();
+            menu.setDataLogin(id);
+            menu.setKantinId(listData.get(0).getId());
+            menu.setVisible(true);
+        }
+    }
+    
     public void login(){
         if(isEmpty()){
             JOptionPane.showMessageDialog(loginView, "Data tidak boleh kosong!");
@@ -42,6 +66,14 @@ public class LoginController {
             daoImplement.login(user);
             if(user.getIsLogin()){
                 JOptionPane.showMessageDialog(null, "Selamat datang " + user.getNama() + "!");
+                if(user.getRole().equals("pelanggan")){
+                    PelangganHomeView home = new PelangganHomeView();
+                    // TODO: set data login to view
+                    home.setDataLogin(user.getId());
+                    home.setVisible(true);
+                } else {
+                    hasKantin(user.getId());
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Username atau Password salah", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             }
