@@ -21,4 +21,8 @@ public class CookieManager {
     public static void setCookie(HashMap<String, String> cookie){
         CookieManager.cookie = cookie;
     }
+    
+    public static void destroyCookie(){
+        CookieManager.cookie.clear();
+    }
 }

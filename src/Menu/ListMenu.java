@@ -5,8 +5,8 @@
  */
 package Menu;
 
+import Helper.LogoutHelper;
 import Home.TokoHomeView;
-import User.LoginView;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -291,8 +291,8 @@ public class ListMenu extends javax.swing.JFrame {
 
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuActionPerformed
         // TODO add your handling code here:
-        LoginView menu = new LoginView();
-        menu.setVisible(true);
+        LogoutHelper l = new LogoutHelper();
+        l.logout();
         dispose();
     }//GEN-LAST:event_logoutMenuActionPerformed
 

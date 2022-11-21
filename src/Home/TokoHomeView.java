@@ -5,6 +5,7 @@
  */
 package Home;
 
+import Helper.LogoutHelper;
 import Menu.ListMenu;
 import javax.swing.JTable;
 
@@ -44,7 +45,7 @@ public class TokoHomeView extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        logoutMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         daftarMenu = new javax.swing.JMenuItem();
         orderMenu = new javax.swing.JMenuItem();
@@ -124,9 +125,14 @@ public class TokoHomeView extends javax.swing.JFrame {
         jMenuItem1.setText("User Profile");
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, 0));
-        jMenuItem2.setText("Logout");
-        jMenu1.add(jMenuItem2);
+        logoutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, 0));
+        logoutMenu.setText("Logout");
+        logoutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(logoutMenu);
 
         jMenuBar1.add(jMenu1);
 
@@ -181,6 +187,13 @@ public class TokoHomeView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_updateMenuBtnActionPerformed
 
+    private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuActionPerformed
+        // TODO add your handling code here:
+        LogoutHelper l = new LogoutHelper();
+        l.logout();
+        dispose();
+    }//GEN-LAST:event_logoutMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,9 +241,9 @@ public class TokoHomeView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JMenuItem logoutMenu;
     private javax.swing.JMenuItem orderMenu;
     private javax.swing.JButton orderMenuBtn;
     private javax.swing.JTable tableMenu;
