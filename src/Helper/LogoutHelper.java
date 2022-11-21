@@ -13,10 +13,8 @@ import User.LoginView;
  */
 public class LogoutHelper {
     public void logout(){
-        System.out.println(CookieManager.getCookie());
         LoginView menu = new LoginView();
         menu.setVisible(true);
         CookieManager.destroyCookie();
-        System.out.println(CookieManager.getCookie());
     }
 }
