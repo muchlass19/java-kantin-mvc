@@ -6,7 +6,6 @@
 package Menu;
 
 import Helper.ConnectionManager;
-import User.UserDAO;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
@@ -30,6 +29,7 @@ public class MenuDAO implements MenuDAOImplement {
     final String selectByNama = "select * from menus where nama like ? and kantin_id = ?";
     final String selectAllAvailable = "select m.*, k.nama from menus as m join kantins as k on m.kantin_id = k.id where m.isAvailable = 1 and k.id = ?";
     final String selectAllAvailableByCust = "select m.*, k.nama from menus as m join kantins as k on m.kantin_id = k.id where m.isAvailable = 1";
+    final String selectNama = "select nama from kantins where id = ?";
     
     public MenuDAO(){
         con = ConnectionManager.getConnection();
@@ -194,6 +194,24 @@ public class MenuDAO implements MenuDAOImplement {
         }
         
         return listData;
+    }
+
+    @Override
+    public String getKantinNama(int id) {
+        String nama = null;
+        PreparedStatement ps;
+        try {
+            ps = (PreparedStatement) con.prepareStatement(selectNama);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                nama = rs.getString("nama");
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(MenuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return nama;
     }
     
 }

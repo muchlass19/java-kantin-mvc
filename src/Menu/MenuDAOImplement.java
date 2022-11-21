@@ -19,4 +19,5 @@ public interface MenuDAOImplement {
     public List<MenuModel> getAllAvailableByKantinId(int id);
     public List<MenuModel> getSingleByKantinId(String cari, int id);
     public List<MenuModel> getAllAvailable();
+    public String getKantinNama(int id);
 }

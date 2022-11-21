@@ -6,9 +6,6 @@
 package Menu;
 
 import Helper.CookieManager;
-import Kantin.KantinDAO;
-import Kantin.KantinDAOImplement;
-import Kantin.KantinModel;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -132,5 +129,10 @@ public class ListMenuController {
             fillTable();
             reset();
         }
+    }
+    
+    public void setNamaKantin(){
+        String nama = daoImplement.getKantinNama(ID_KANTIN);
+        view.getKantinLabel().setText("List Menu " + nama);
     }
 }

@@ -26,6 +26,7 @@ public class ListMenu extends javax.swing.JFrame {
         initComponents();
         controller = new ListMenuController(this);
         controller.fillTable();
+        controller.setNamaKantin();
     }
 
     /**
@@ -363,6 +364,7 @@ public class ListMenu extends javax.swing.JFrame {
     public JTextField getIdMenu() {
         return idMenu;
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
