@@ -5,6 +5,7 @@
  */
 package Kantin;
 
+import Helper.CookieManager;
 import Home.TokoHomeView;
 import javax.swing.JOptionPane;
 
@@ -37,10 +38,11 @@ public class KantinController {
         if(isEmpty()){
             JOptionPane.showMessageDialog(view, "Data tidak boleh kosong!");
         } else {
+            int ID_USER = Integer.valueOf(CookieManager.getCookie().get("ID_USER"));
             KantinModel data = new KantinModel();
             data.setNama(view.getNama().getText());
             data.setNoUrut(view.getNoUrut().getText());
-            data.setUserId(view.getUserLogin());
+            data.setUserId(ID_USER);
             
             daoImplement.registration(data);
             JOptionPane.showMessageDialog(view, "Berhasil menambahkan data kantin!");

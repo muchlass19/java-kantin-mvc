@@ -22,22 +22,6 @@ public class ListMenu extends javax.swing.JFrame {
      * Creates new form ListMenu
      */
     ListMenuController controller;
-    int USER_ID;
-    int KANTIN_ID;
-    
-    public void setDataLogin(int USER_ID){
-        this.USER_ID = USER_ID;
-    }
-    public int getDataLogin(){
-        return this.USER_ID;
-    }
-    
-    public void setKantinId(int KANTIN_ID){
-        this.KANTIN_ID = KANTIN_ID;
-    }
-    public int getKantinId(){
-        return this.KANTIN_ID;
-    }
     public ListMenu() {
         initComponents();
         controller = new ListMenuController(this);
@@ -300,8 +284,6 @@ public class ListMenu extends javax.swing.JFrame {
     private void homeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuActionPerformed
         // TODO add your handling code here:
         TokoHomeView menu = new TokoHomeView();
-        menu.setDataLogin(getDataLogin());
-        menu.setKantinId(getKantinId());
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeMenuActionPerformed

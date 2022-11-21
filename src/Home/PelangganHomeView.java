@@ -16,12 +16,7 @@ public class PelangganHomeView extends javax.swing.JFrame {
     /**
      * Creates new form HomeView
      */
-    int USER_ID;
     PelangganHomeController controller;
-    
-    public void setDataLogin(int id){
-        this.USER_ID = id;
-    }
     
     public PelangganHomeView() {
         initComponents();

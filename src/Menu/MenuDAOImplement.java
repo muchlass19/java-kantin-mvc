@@ -15,7 +15,8 @@ public interface MenuDAOImplement {
     public void insert(MenuModel data);
     public void update(MenuModel data);
     public void delete(int id);
-    public List<MenuModel> getAll();
+    public List<MenuModel> getAllByKantinId(int id);
+    public List<MenuModel> getAllAvailableByKantinId(int id);
+    public List<MenuModel> getSingleByKantinId(String cari, int id);
     public List<MenuModel> getAllAvailable();
-    public List<MenuModel> getSingle(String cari);
 }

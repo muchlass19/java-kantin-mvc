@@ -17,27 +17,12 @@ public class TokoHomeView extends javax.swing.JFrame {
     /**
      * Creates new form TokoHomeView
      */
-    int USER_ID;
-    int KANTIN_ID;
     TokoHomeController controller;
     
     public TokoHomeView() {
         initComponents();
         controller = new TokoHomeController(this);
         controller.fillTable();
-    }
-    
-    public void setDataLogin(int id){
-        this.USER_ID = id;
-    }
-    public int getDataLogin(){
-        return this.USER_ID;
-    }
-    public void setKantinId(int id){
-        this.KANTIN_ID = id;
-    }
-    public int getKantinId(){
-        return this.KANTIN_ID;
     }
 
     /**
@@ -185,8 +170,6 @@ public class TokoHomeView extends javax.swing.JFrame {
     private void daftarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarMenuActionPerformed
         // TODO add your handling code here:
         ListMenu menu = new ListMenu();
-        menu.setDataLogin(getDataLogin());
-        menu.setKantinId(getKantinId());
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_daftarMenuActionPerformed
@@ -194,8 +177,6 @@ public class TokoHomeView extends javax.swing.JFrame {
     private void updateMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuBtnActionPerformed
         // TODO add your handling code here:
         ListMenu menu = new ListMenu();
-        menu.setDataLogin(getDataLogin());
-        menu.setKantinId(getKantinId());
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_updateMenuBtnActionPerformed

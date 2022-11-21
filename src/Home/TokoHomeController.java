@@ -5,6 +5,7 @@
  */
 package Home;
 
+import Helper.CookieManager;
 import Menu.MenuDAO;
 import Menu.MenuDAOImplement;
 import Menu.MenuModel;
@@ -19,15 +20,16 @@ public class TokoHomeController {
     TokoHomeView view;
     MenuDAOImplement daoImplement;
     List<MenuModel> listData;
+    int ID_KANTIN = Integer.valueOf(CookieManager.getCookie().get("ID_KANTIN"));
     
     public TokoHomeController(TokoHomeView view){
         this.view = view;
         daoImplement = new MenuDAO();
-        listData = daoImplement.getAll();
+        listData = daoImplement.getAllAvailableByKantinId(ID_KANTIN);
     }
     
     public void fillTable(){
-        listData = daoImplement.getAllAvailable();
+        listData = daoImplement.getAllAvailableByKantinId(ID_KANTIN);
         TableModelMenu table = new TableModelMenu(listData);
         view.getTableMenu().setModel(table);
     }

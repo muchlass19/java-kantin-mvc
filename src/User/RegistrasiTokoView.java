@@ -175,6 +175,7 @@ public class RegistrasiTokoView extends javax.swing.JFrame {
         // TODO add your handling code here:
         userController.registrasi();
         userController.reset();
+        dispose();
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed

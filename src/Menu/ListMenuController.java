@@ -5,6 +5,7 @@
  */
 package Menu;
 
+import Helper.CookieManager;
 import Kantin.KantinDAO;
 import Kantin.KantinDAOImplement;
 import Kantin.KantinModel;
@@ -19,11 +20,12 @@ public class ListMenuController {
     ListMenu view;
     MenuDAOImplement daoImplement;
     List<MenuModel> listData;
+    int ID_KANTIN = Integer.valueOf(CookieManager.getCookie().get("ID_KANTIN"));
     
     public ListMenuController(ListMenu view){
         this.view = view;
         daoImplement = new MenuDAO();
-        listData = daoImplement.getAll();
+        listData = daoImplement.getAllByKantinId(ID_KANTIN);
     }
     
     public void reset(){
@@ -43,7 +45,7 @@ public class ListMenuController {
     }
     
     public void fillTable(){
-        listData = daoImplement.getAll();
+        listData = daoImplement.getAllByKantinId(ID_KANTIN);
         TableModelMenu table = new TableModelMenu(listData);
         view.getTableMenu().setModel(table);
     }
@@ -52,7 +54,7 @@ public class ListMenuController {
         if(isCariEmpty()){
             JOptionPane.showMessageDialog(view, "Data tidak boleh kosong!");
         } else {
-            listData = daoImplement.getSingle(view.getCari().getText());
+            listData = daoImplement.getSingleByKantinId(view.getCari().getText(), ID_KANTIN);
             TableModelMenu table = new TableModelMenu(listData);
             view.getTableMenu().setModel(table);
             
@@ -88,7 +90,7 @@ public class ListMenuController {
             menu.setNama(view.getNama().getText());
             menu.setHarga(Float.valueOf(view.getHarga().getText()));
             menu.setIsAvailable(isAvailable);
-            menu.setKantinId(view.getKantinId());
+            menu.setKantinId(ID_KANTIN);
             
             daoImplement.insert(menu);
             JOptionPane.showMessageDialog(view, "Berhasil menambahkan data!");
@@ -111,7 +113,7 @@ public class ListMenuController {
             menu.setHarga(Float.valueOf(view.getHarga().getText()));
             menu.setIsAvailable(isAvailable);
             menu.setId(Integer.valueOf(view.getIdMenu().getText()));
-            menu.setKantinId(view.getKantinId());
+            menu.setKantinId(ID_KANTIN);
             
             daoImplement.update(menu);
             JOptionPane.showMessageDialog(view, "Berhasil mengubah data!");

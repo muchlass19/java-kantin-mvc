@@ -22,14 +22,6 @@ public class RegistrasiKantinView extends javax.swing.JFrame {
         initComponents();
         controller = new RegistrasiKantinController(this);
     }
-    
-    int USER_ID;
-    public void setDataLogin(int USER_ID){
-        this.USER_ID = USER_ID;
-    }
-    public int getUserLogin(){
-        return this.USER_ID;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

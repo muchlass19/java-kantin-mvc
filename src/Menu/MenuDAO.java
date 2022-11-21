@@ -26,9 +26,10 @@ public class MenuDAO implements MenuDAOImplement {
     final String insert = "insert into menus (nama, harga, isAvailable, kantin_id) values (?, ?, ?, ?)";
     final String update = "update menus set nama = ?, harga = ?, isAvailable = ? where id = ?";
     final String delete = "delete from menus where id = ?";
-    final String select = "select * from menus;";
-    final String selectByNama = "select * from menus where nama like ?";
-    final String selectAllAvailable = "select m.*, k.nama from menus as m join kantins as k on m.kantin_id = k.id where m.isAvailable = 1 ";
+    final String select = "select * from menus where kantin_id = ?;";
+    final String selectByNama = "select * from menus where nama like ? and kantin_id = ?";
+    final String selectAllAvailable = "select m.*, k.nama from menus as m join kantins as k on m.kantin_id = k.id where m.isAvailable = 1 and k.id = ?";
+    final String selectAllAvailableByCust = "select m.*, k.nama from menus as m join kantins as k on m.kantin_id = k.id where m.isAvailable = 1";
     
     public MenuDAO(){
         con = ConnectionManager.getConnection();
@@ -95,36 +96,13 @@ public class MenuDAO implements MenuDAOImplement {
     }
 
     @Override
-    public List<MenuModel> getAll() {
+    public List<MenuModel> getAllByKantinId(int id) {
         List<MenuModel> listData = null;
+        PreparedStatement ps;
         try{
-            listData = new ArrayList<MenuModel>();
-            Statement st = (Statement) con.createStatement();
-            ResultSet rs = st.executeQuery(select);
-            while(rs.next()){
-                MenuModel data = new MenuModel();
-                data.setId(rs.getInt("id"));
-                data.setNama(rs.getString("nama"));
-                data.setHarga(rs.getFloat("harga"));
-                data.setIsAvailable(rs.getInt("isAvailable"));
-                data.setKantinId(rs.getInt("kantin_id"));
-                listData.add(data);
-            }
-        } catch(SQLException ex){
-            Logger.getLogger(MenuDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return listData;
-    }
-
-    @Override
-    public List<MenuModel> getSingle(String cari) {
-        List<MenuModel> listData = null;
-        PreparedStatement ps = null;
-        try{
-            listData = new ArrayList<MenuModel>();
-            ps = (PreparedStatement) con.prepareStatement(selectByNama);
-            ps.setString(1, "%" + cari + "%");
+            listData = new ArrayList<>();
+            ps = (PreparedStatement) con.prepareStatement(select);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 MenuModel data = new MenuModel();
@@ -143,12 +121,64 @@ public class MenuDAO implements MenuDAOImplement {
     }
 
     @Override
+    public List<MenuModel> getSingleByKantinId(String cari, int id) {
+        List<MenuModel> listData = null;
+        PreparedStatement ps;
+        try{
+            listData = new ArrayList<>();
+            ps = (PreparedStatement) con.prepareStatement(selectByNama);
+            ps.setString(1, "%" + cari + "%");
+            ps.setInt(2, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MenuModel data = new MenuModel();
+                data.setId(rs.getInt("id"));
+                data.setNama(rs.getString("nama"));
+                data.setHarga(rs.getFloat("harga"));
+                data.setIsAvailable(rs.getInt("isAvailable"));
+                data.setKantinId(rs.getInt("kantin_id"));
+                listData.add(data);
+            }
+        } catch(SQLException ex){
+            Logger.getLogger(MenuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listData;
+    }
+
+    @Override
+    public List<MenuModel> getAllAvailableByKantinId(int id) {
+        List<MenuModel> listData = null;
+        PreparedStatement ps;
+        try{
+            listData = new ArrayList<>();
+            ps = (PreparedStatement) con.prepareStatement(selectAllAvailable);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MenuModel data = new MenuModel();
+                data.setId(rs.getInt("m.id"));
+                data.setNama(rs.getString("m.nama"));
+                data.setHarga(rs.getFloat("m.harga"));
+                data.setIsAvailable(rs.getInt("m.isAvailable"));
+                data.setKantinId(rs.getInt("m.kantin_id"));
+                data.setNamaKantin(rs.getString("k.nama"));
+                listData.add(data);
+            }
+        } catch(SQLException ex){
+            Logger.getLogger(MenuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listData;
+    }
+
+    @Override
     public List<MenuModel> getAllAvailable() {
         List<MenuModel> listData = null;
         try{
-            listData = new ArrayList<MenuModel>();
+            listData = new ArrayList<>();
             Statement st = (Statement) con.createStatement();
-            ResultSet rs = st.executeQuery(selectAllAvailable);
+            ResultSet rs = st.executeQuery(selectAllAvailableByCust);
             while(rs.next()){
                 MenuModel data = new MenuModel();
                 data.setId(rs.getInt("m.id"));
