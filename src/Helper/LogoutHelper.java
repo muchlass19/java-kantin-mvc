@@ -5,19 +5,16 @@
  */
 package Helper;
 
-import User.RegistrasiView;
 import User.LoginView;
+
 /**
  *
  * @author Chlas
  */
-public class MenuMethods {
-    public static void gotoRegistrasi(){
-        RegistrasiView menu = new RegistrasiView();
-        menu.setVisible(true);
-    }
-    public static void gotoLogin(){
+public class LogoutHelper {
+    public void logout(){
         LoginView menu = new LoginView();
         menu.setVisible(true);
+        CookieManager.destroyCookie();
     }
 }

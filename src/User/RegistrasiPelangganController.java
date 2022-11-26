@@ -5,18 +5,17 @@
  */
 package User;
 
-import Helper.MenuMethods;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Chlas
  */
-public class RegistrasiController {
-    RegistrasiView registrasiView;
+public class RegistrasiPelangganController {
+    RegistrasiPelangganView registrasiView;
     UserDAOImplement daoImplement;
     
-    public RegistrasiController(RegistrasiView registrasiView) {
+    public RegistrasiPelangganController(RegistrasiPelangganView registrasiView) {
         this.registrasiView = registrasiView;
         daoImplement = new UserDAO();
     }
@@ -46,7 +45,8 @@ public class RegistrasiController {
             
             daoImplement.registration(user);
             JOptionPane.showMessageDialog(null, "Berhasil registrasi user!");
-            MenuMethods.gotoLogin();
+            LoginView menu = new LoginView();
+            menu.setVisible(true);
         }
     }
     
