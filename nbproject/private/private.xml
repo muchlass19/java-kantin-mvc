@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/UserController.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/RegistrasiView.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Helper/ConnectionManager.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/LoginView.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/UserDAO.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/UserDAOImplement.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Helper/MenuMethods.java</file>
-            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/User/UserModel.java</file>
+            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Menu/ListMenu.java</file>
+            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Menu/ListMenuController.java</file>
+            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Menu/MenuDAO.java</file>
+            <file>file:/C:/Users/Chlas/Documents/NetBeansProjects/Kantin_Unpam/src/Menu/MenuDAOImplement.java</file>
         </group>
     </open-files>
 </project-private>

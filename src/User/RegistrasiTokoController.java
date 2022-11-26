@@ -5,7 +5,6 @@
  */
 package User;
 
-import Helper.MenuMethods;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,7 +45,8 @@ public class RegistrasiTokoController {
             
             daoImplement.registration(user);
             JOptionPane.showMessageDialog(null, "Berhasil registrasi user!");
-            MenuMethods.gotoLogin();
+            LoginView menu = new LoginView();
+            menu.setVisible(true);
         }
     }
     

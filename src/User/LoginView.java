@@ -5,7 +5,6 @@
  */
 package User;
 
-import Helper.MenuMethods;
 import javax.swing.JTextField;
 
 /**
@@ -57,9 +56,13 @@ public class LoginView extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Username");
 
+        username.setText("cigreee");
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
+
+        password.setText("cigreee");
 
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -157,19 +160,22 @@ public class LoginView extends javax.swing.JFrame {
 
     private void registrasiPelangganMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrasiPelangganMenuActionPerformed
         // TODO add your handling code here:
-        MenuMethods.gotoRegistrasiPelanggan();
+        RegistrasiPelangganView menu = new RegistrasiPelangganView();
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_registrasiPelangganMenuActionPerformed
 
     private void registrasiTokoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrasiTokoMenuActionPerformed
         // TODO add your handling code here:
-        MenuMethods.gotoRegistrasiToko();
+        RegistrasiTokoView menu = new RegistrasiTokoView();
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_registrasiTokoMenuActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         loginController.login();
+        dispose();
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
